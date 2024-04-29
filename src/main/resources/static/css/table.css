@@ -1,0 +1,83 @@
+.table-containerHoteles {
+    overflow-y: auto;
+    max-height: 400px; /* Ajusta la altura máxima según lo necesites */
+}
+
+.table-containerHoteles table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-containerHoteles th, .table-containerHoteles td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-containerHoteles th {
+    background-color: #f2f2f2;
+}
+
+.calificacion {
+    position: relative;
+}
+
+.calificacion-list {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+.calificacion-list li {
+    margin: 5px 0;
+    cursor: default;
+}
+
+.calificacionHover:hover .calificacion-list {
+    display: block;
+}
+
+
+.calificarLogo{
+    width: 35px;
+    height: auto;
+}
+
+.container aside {
+    display: inline-block;
+    justify-content: space-between;
+    /*margin-top: 20px; !* Ajusta el margen superior *!*/
+    flex: 1;
+    margin: 100px;
+}
+
+.divMatricular {
+   background-color: lightgrey;
+    border-radius: 10px;
+}
+.matricular-buttom{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.nombreCurso{
+    font-size: 24px;
+    color: white;
+    font-family: cursive, sans-serif;
+    font-weight: bold;
+    background-color: #4CAF50;
+}
+

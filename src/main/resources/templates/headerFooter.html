@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head" >
+    <meta charset="UTF-8">
+    <title>HeaderFooter</title>
+    <link href="/css/style.css" rel="stylesheet" th:href="@{/css/style.css}" type="text/css" >
+    <link href="/css/table.css" rel="stylesheet" th:href="@{/css/table.css}" type="text/css" >
+</head>
+<body>
+<header th:fragment="header" class="header-footer">
+    <nav>
+        <div>
+            <h1 id="headerName">Academia<br>Turing</h1>
+        </div>
+        <div class="headerLogo">
+            <img th:src="@{/images/logo.jpg}" th:alt="headerLogo.jpg">
+        </div>
+        <th:block th:if="${session.usuario != null}">
+            <div>
+                <span>Bienvenido, </span>
+                <a th:href="@{/presentation/usuario/edit}" th:text="${session.usuario.nombre}"></a>
+                <span>&nbsp;&nbsp;</span> <!-- Agrega espacios con entidades HTML -->
+                <a href="/presentation/usuario/logout">Logout</a>
+            </div>
+        </th:block>
+<!--        <th:block th:unless="${session.usuario != null}">-->
+<!--            <div>-->
+<!--                <a href="/presentation/usuario/show">Login</a>-->
+<!--            </div>-->
+<!--        </th:block>-->
+    </nav>
+</header>
+
+
+
+    <footer th:fragment="footer" class="header-footer">
+        <div><h1>@Academia_turing.com</h1></div>
+        <div class="headerLogo"><img  th:src="@{/images/logo.jpg}" th:alt="headerLogo.jpg"> </div>
+    </footer>
+
+</body>
+</html>
