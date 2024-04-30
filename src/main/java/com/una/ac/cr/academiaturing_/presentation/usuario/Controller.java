@@ -2,13 +2,16 @@ package com.una.ac.cr.academiaturing_.presentation.usuario;
 
 
 import com.una.ac.cr.academiaturing_.logic.AusuarioEntity;
+import com.una.ac.cr.academiaturing_.logic.CursoEntity;
 import com.una.ac.cr.academiaturing_.service.CursoService;
 import com.una.ac.cr.academiaturing_.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -36,6 +39,13 @@ public class Controller {
             model.addAttribute("error", "Usuario o contraseña inválidos.");
             return "index";
         }
+    }
+    @GetMapping("/presentation/usuario/cursoSelect")
+    public String saveCurso(Model model, @ModelAttribute CursoEntity cursos, @RequestParam("id") String id, @RequestParam("codigo") String codigo ) {
+        Optional<AusuarioEntity> usuario = usuarioService.usuarioFindById(id);
+        model.addAttribute("curso", cursosService.findByCodigo(codigo));
+        model.addAttribute("cursos", cursosService.findAll());
+        return "/presentation/usuario/View";
     }
 
 

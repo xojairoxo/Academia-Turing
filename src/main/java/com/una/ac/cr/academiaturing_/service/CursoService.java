@@ -35,4 +35,8 @@ public class CursoService {
     public void deleteAll() {
         cursoRepository.deleteAll();
     }
+
+    public CursoEntity findByCodigo(String codigo) {
+        return cursoRepository.findByCodigo(codigo);
+    }
 }

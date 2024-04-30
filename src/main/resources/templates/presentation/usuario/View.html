@@ -4,27 +4,53 @@
 <body>
 <header th:insert="headerFooter::header"></header>
 
-<aside>
-    <div class="search-container"></div>
-    <div class="table-containerHoteles">
-        <table>
-            <tr>
-                <th>Codigo</th>
-                <th>Nombres</th>
-                <th>Creditos</th>
-            </tr>
-            <tr th:each="c: ${cursos}">
-                <td th:text="${c.codigo}"></td>
-                <td class="calificacionHover"><span th:text="${c.nombre}"></span></td>
-                <td class="calificacionHover"><span th:text="${c.creditos}"></span></td>
-<!--                <td>-->
-<!--                    <a th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}">-->
-<!--                        <img class="calificarLogo" src="/images/right.png">-->
-<!--                    </a>-->
-<!--                </td>-->
-            </tr>
-        </table>
-    </div>
-</aside>
+    <aside>
+        <div class="search-container"></div>
+        <div class="table-containerHoteles">
+            <table>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombres</th>
+                    <th>Creditos</th>
+                </tr>
+                <tr th:each="c: ${cursos}">
+                    <td th:text="${c.codigo}"></td>
+                    <td class="calificacionHover"><span th:text="${c.nombre}"></span></td>
+                    <td class="calificacionHover"><span th:text="${c.creditos}"></span></td>
+                    <td>
+                        <a th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}">
+                            <img class="calificarLogo" src="/images/right.png">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </aside>
+    <aside>
+        <div class="divMatricular">
+            <form th:action="@{/presentation/usuario/agregaCurso}" method="post">
+                <!-- Agregar campo oculto para enviar el 'id' -->
+                <input type="hidden" name="id" th:value="${session.usuario.id}">
+                <h1 class="matricularP">Matricular</h1>
+                <!-- Otros campos del formulario -->
+                <h1 class="nombreCurso" th:each="c: ${curso}" th:text="${c.nombre}"> &hellip;</h1> <br> <br> <br>
+                <input th:each="c: ${curso}" type="hidden" name="codigo" th:value="${c.codigo}">
+                <label for="horario">Horario:</label>
+                <select id="horario" name="horario">
+                    <option value="Mañana">Mañana</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noche">Noche</option>
+                </select><br><br>
+                <label for="prioridad">Prioridad:</label>
+                <select id="prioridad" name="prioridad">
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                </select><br><br>
+                <input class="matricular-buttom" type="submit" value="Matricular">
+            </form>
+        </div>
+    </aside>
+
 </body>
 </html>

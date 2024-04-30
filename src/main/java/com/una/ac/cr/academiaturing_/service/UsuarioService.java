@@ -23,6 +23,10 @@ public class UsuarioService {
         return usuarioRepository.findByUsernameAndContrasenia(usuario, password);
     }
 
+    public Optional<AusuarioEntity> usuarioFindById(String id) {
+        return usuarioRepository.findById(id);
+    }
+
 
 
 }

@@ -14,8 +14,8 @@ CREATE TABLE Ausuario(
 CREATE TABLE curso(
 	codigo varchar(15),
     nombre varchar(30),
+    cupo int,
     creditos int,
-
 	Primary Key(codigo)
 );
 
@@ -34,11 +34,11 @@ INSERT INTO Ausuario (id, nombre, contrasenia, username)
 VALUES ('1', 'Juan Perez', '123', '123'),
        ('2', 'Maria Garcia', '1234', '1234');
 
-INSERT INTO curso (codigo, nombre, creditos)
-VALUES ('C001', 'Programación I', 3),
-       ('C002', 'Programación II', 4),
-       ('C003', 'Programación III', 3),
-       ('C004', 'Programación IV', 4);
+INSERT INTO curso (codigo, nombre, cupo, creditos)
+VALUES ('C001', 'Programación I', 5,3),
+       ('C002', 'Programación II',5, 4),
+       ('C003', 'Programación III',5, 3),
+       ('C004', 'Programación IV',5,  4);
 
 SELECT * FROM Ausuario;
 SELECT * FROM curso;
