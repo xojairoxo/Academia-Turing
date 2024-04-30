@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:extends="headerFooter">
+<head th:insert="headerFooter::head"></head>
+<body>
+<header th:insert="headerFooter::header"></header>
+
+<aside>
+    <div class="search-container"></div>
+    <div class="table-containerHoteles">
+        <table>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombres</th>
+                <th>Creditos</th>
+            </tr>
+            <tr th:each="c: ${cursos}">
+                <td th:text="${c.codigo}"></td>
+                <td class="calificacionHover"><span th:text="${c.nombre}"></span></td>
+                <td class="calificacionHover"><span th:text="${c.creditos}"></span></td>
+<!--                <td>-->
+<!--                    <a th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}">-->
+<!--                        <img class="calificarLogo" src="/images/right.png">-->
+<!--                    </a>-->
+<!--                </td>-->
+            </tr>
+        </table>
+    </div>
+</aside>
+</body>
+</html>

@@ -23,11 +23,11 @@
                 <a href="/presentation/usuario/logout">Logout</a>
             </div>
         </th:block>
-<!--        <th:block th:unless="${session.usuario != null}">-->
-<!--            <div>-->
-<!--                <a href="/presentation/usuario/show">Login</a>-->
-<!--            </div>-->
-<!--        </th:block>-->
+        <th:block th:unless="${session.usuario == null}">
+            <div>
+                <a href="/presentation/usuario/show">Login</a>
+            </div>
+        </th:block>
     </nav>
 </header>
 
