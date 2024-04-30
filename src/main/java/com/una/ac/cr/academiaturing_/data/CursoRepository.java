@@ -4,8 +4,10 @@ import com.una.ac.cr.academiaturing_.logic.CursoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 public interface CursoRepository extends JpaRepository<CursoEntity, String> {
-    CursoEntity findByCodigo (String codigo);
+    Optional<CursoEntity> findByCodigo (String codigo);
 }

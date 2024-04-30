@@ -14,7 +14,7 @@ CREATE TABLE Ausuario(
 CREATE TABLE curso(
 	codigo varchar(15),
     nombre varchar(30),
-    cupo int,
+    cupo int,   
     creditos int,
 	Primary Key(codigo)
 );
@@ -47,4 +47,8 @@ SELECT * FROM curso;
 INSERT INTO cursosUsuarios (id_usuario, codigo_curso, horario, prioridad)
 VALUES ('1', 'C001', 'Lunes y Miércoles 9:00 AM - 11:00 AM', 'Alta'),
        ('2', 'C002', 'Martes y Jueves 2:00 PM - 4:00 PM', 'Media');
+       SELECT * FROM cursosUsuarios where id_usuario = '1';
+		DELETE FROM cursosUsuarios WHERE id_usuario = '1';
+
+       
 

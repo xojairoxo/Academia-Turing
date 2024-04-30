@@ -4,7 +4,6 @@ import com.una.ac.cr.academiaturing_.data.CursoRepository;
 import com.una.ac.cr.academiaturing_.logic.CursoEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,8 +23,8 @@ public class CursoService {
         return cursoRepository.findAll();
     }
 
-    public Optional<CursoEntity> findById(String id) {
-        return cursoRepository.findById(id);
+    public Optional<CursoEntity> findById(String codigo) {
+        return cursoRepository.findByCodigo(codigo);
     }
 
     public void deleteById(String id) {
@@ -36,7 +35,7 @@ public class CursoService {
         cursoRepository.deleteAll();
     }
 
-    public CursoEntity findByCodigo(String codigo) {
+    public Optional<CursoEntity> findByCodigo(String codigo) {
         return cursoRepository.findByCodigo(codigo);
     }
 }

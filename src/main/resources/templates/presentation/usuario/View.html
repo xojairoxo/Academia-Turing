@@ -12,11 +12,14 @@
                     <th>Codigo</th>
                     <th>Nombres</th>
                     <th>Creditos</th>
+                    <th>Cupo del curso</th>
+                    <th>Seleccionar Curso</th>
                 </tr>
                 <tr th:each="c: ${cursos}">
                     <td th:text="${c.codigo}"></td>
                     <td class="calificacionHover"><span th:text="${c.nombre}"></span></td>
                     <td class="calificacionHover"><span th:text="${c.creditos}"></span></td>
+                    <td class="calificacionHover"><span th:text="${c.cupo}"></span></td>
                     <td>
                         <a th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}">
                             <img class="calificarLogo" src="/images/right.png">
@@ -49,8 +52,40 @@
                 </select><br><br>
                 <input class="matricular-buttom" type="submit" value="Matricular">
             </form>
+            <div th:if="${errorMessage}" class="error">
+                <h2 class="error" th:text="${errorMessage}"></h2>
+            </div>
         </div>
     </aside>
+    <aside>
+        <h1 class="loginP" th:text="${session.usuario.nombre}"></h1>
+        <table class="table-containerHoteles">
+            <thead>
+            <tr>
+                <th>Eliminar</th>
+                <th>Codigo</th>
+                <th>Nombres</th>
+                <th>Creditos</th>
+                <th>Horario</th>
+                <th>Prioridad</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="curso : ${cursosMatricula}">
+                <td><a th:href="@{/presentation/curso/delete(id=${curso.idUsuario}, codigo=${curso.codigoCurso})}">
+                    <img src="/images/delete.png" alt="delete.png">
+                </a></td>
+                <td th:text="${curso.codigoCurso}"></td>
+                <td th:text="${curso.getCursoByCodigoCurso().nombre}"></td>
+                <td th:text="${curso.getCursoByCodigoCurso().creditos}"></td>
+                <td th:text="${curso.horario}"></td>
+                <td th:text="${curso.prioridad}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </aside>
+
+    <footer th:insert="headerFooter::footer"></footer>
 
 </body>
 </html>

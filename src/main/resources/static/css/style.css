@@ -131,4 +131,11 @@ body {
 }
 
 
-
+.error {
+    display: block;
+    font-family: cursive, sans-serif;
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+    color: red;
+    font-size: 20px;
+    margin-top: 5px;
+}

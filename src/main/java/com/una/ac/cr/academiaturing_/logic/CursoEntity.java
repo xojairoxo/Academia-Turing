@@ -2,7 +2,6 @@ package com.una.ac.cr.academiaturing_.logic;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -16,10 +15,11 @@ public class CursoEntity {
     @Column(name = "nombre")
     private String nombre;
     @Basic
+    @Column(name = "cupo")
+    private Integer cupo;
+    @Basic
     @Column(name = "creditos")
     private Integer creditos;
-    @OneToMany(mappedBy = "cursoByCodigoCurso")
-    private Collection<CursosusuariosEntity> cursosusuariosByCodigo;
 
     public String getCodigo() {
         return codigo;
@@ -37,6 +37,14 @@ public class CursoEntity {
         this.nombre = nombre;
     }
 
+    public Integer getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(Integer cupo) {
+        this.cupo = cupo;
+    }
+
     public Integer getCreditos() {
         return creditos;
     }
@@ -50,19 +58,11 @@ public class CursoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CursoEntity that = (CursoEntity) o;
-        return Objects.equals(codigo, that.codigo) && Objects.equals(nombre, that.nombre) && Objects.equals(creditos, that.creditos);
+        return Objects.equals(codigo, that.codigo) && Objects.equals(nombre, that.nombre) && Objects.equals(cupo, that.cupo) && Objects.equals(creditos, that.creditos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo, nombre, creditos);
-    }
-
-    public Collection<CursosusuariosEntity> getCursosusuariosByCodigo() {
-        return cursosusuariosByCodigo;
-    }
-
-    public void setCursosusuariosByCodigo(Collection<CursosusuariosEntity> cursosusuariosByCodigo) {
-        this.cursosusuariosByCodigo = cursosusuariosByCodigo;
+        return Objects.hash(codigo, nombre, cupo, creditos);
     }
 }
