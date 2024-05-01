@@ -3,6 +3,8 @@
 <head th:insert="headerFooter::head"></head>
 <body>
 <header th:insert="headerFooter::header"></header>
+<div class="container">
+
 
     <aside>
         <div class="search-container"></div>
@@ -21,8 +23,11 @@
                     <td class="calificacionHover"><span th:text="${c.creditos}"></span></td>
                     <td class="calificacionHover"><span th:text="${c.cupo}"></span></td>
                     <td>
-                        <a th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}">
+                        <a th:if="${c.cupo > 0}" th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}">
                             <img class="calificarLogo" src="/images/right.png">
+                        </a>
+                        <a th:if="${c.cupo <= 0}"  class="disabled-link" th:href="@{/presentation/usuario/cursoSelect(id=${session.usuario.id}, codigo=${c.codigo})}" >
+                            <img class="calificarLogo" src="/images/right.png" disabled>
                         </a>
                     </td>
                 </tr>
@@ -72,7 +77,7 @@
             </thead>
             <tbody>
             <tr th:each="curso : ${cursosMatricula}">
-                <td><a th:href="@{/presentation/curso/delete(id=${curso.idUsuario}, codigo=${curso.codigoCurso})}">
+                <td><a th:href="@{/presentation/curso/deleteCurso(id=${curso.idUsuario}, codigo=${curso.codigoCurso})}">
                     <img src="/images/delete.png" alt="delete.png">
                 </a></td>
                 <td th:text="${curso.codigoCurso}"></td>
@@ -84,7 +89,7 @@
             </tbody>
         </table>
     </aside>
-
+</div>
     <footer th:insert="headerFooter::footer"></footer>
 
 </body>

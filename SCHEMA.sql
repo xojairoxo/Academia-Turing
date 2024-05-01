@@ -35,10 +35,12 @@ VALUES ('1', 'Juan Perez', '123', '123'),
        ('2', 'Maria Garcia', '1234', '1234');
 
 INSERT INTO curso (codigo, nombre, cupo, creditos)
-VALUES ('C001', 'Programación I', 5,3),
+VALUES ('C001', 'Programación I', 5,4),
        ('C002', 'Programación II',5, 4),
-       ('C003', 'Programación III',5, 3),
-       ('C004', 'Programación IV',5,  4);
+       ('C003', 'Programación III',5, 4),
+       ('C004', 'Bases de datos I',5,  4),
+       ('C005', 'Bases de datos II',5,  4),
+       ('C006', 'Inteligencia Artifical',0,  4);
 
 SELECT * FROM Ausuario;
 SELECT * FROM curso;

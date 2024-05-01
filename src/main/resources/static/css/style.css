@@ -123,6 +123,13 @@ body {
     width: 70%;
     margin: auto;
 }
+.container aside{
+    display: inline-block;
+    justify-content: space-between;
+    /*margin-top: 20px; !* Ajusta el margen superior *!*/
+    flex: 1;
+    margin: 100px;
+}
 
 .search-container {
     display: flex;
@@ -134,8 +141,14 @@ body {
 .error {
     display: block;
     font-family: cursive, sans-serif;
-    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+    text-transform: uppercase;
     color: red;
     font-size: 20px;
     margin-top: 5px;
+}
+
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.6;
+
 }

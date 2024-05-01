@@ -59,6 +59,7 @@ public class Controller {
                 cursosusuarios.setHorario(horario);
                 cursosusuarios.setPrioridad(prioridad);
                 matriculaService.save(cursosusuarios);
+                cursoService.decrementarCupoCurso(curso);
                 return "redirect:/presentation/usuario/vistaUsuario";
             } else {
                 // Agregar el mensaje de error al modelo
@@ -71,6 +72,28 @@ public class Controller {
             return "redirect:/presentation/usuario/vistaUsuario";
         }
     }
+    @GetMapping("/presentation/curso/deleteCurso")
+public String deleteCurso(Model model, HttpSession session, @RequestParam("id") String id, @RequestParam("codigo") String codigo) {
+        Optional<AusuarioEntity> optionalUsuario = usuarioService.usuarioFindById(id);
+        Optional<CursoEntity> optionalCurso = cursoService.findByCodigo(codigo);
+
+        if (optionalUsuario.isPresent() && optionalCurso.isPresent()) {
+            AusuarioEntity usuario = optionalUsuario.get();
+            CursoEntity curso = optionalCurso.get();
+            Boolean cursoYaMatriculado = matriculaService.ExistsByIdUsuarioAndIdCurso(usuario.getId(), curso.getCodigo());
+            if (cursoYaMatriculado) {
+                matriculaService.deleteByIdUsuarioAndCodigoCurso(usuario.getId(), curso.getCodigo());
+                return "redirect:/presentation/usuario/vistaUsuario";
+            } else {
+                session.setAttribute("errorMessage", "El curso no está asignado al usuario.");
+                return "redirect:/presentation/usuario/vistaUsuario";
+            }
+        } else {
+            session.setAttribute("errorMessage", "Usuario o curso no encontrado.");
+            return "redirect:/presentation/usuario/vistaUsuario";
+        }
+    }
+
 
 
 }

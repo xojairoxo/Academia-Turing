@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 
 public class CursoService {
-    private CursoRepository cursoRepository;
+    final CursoRepository cursoRepository;
 
     public CursoService(CursoRepository cursoRepository) {
         this.cursoRepository = cursoRepository;
@@ -37,5 +37,9 @@ public class CursoService {
 
     public Optional<CursoEntity> findByCodigo(String codigo) {
         return cursoRepository.findByCodigo(codigo);
+    }
+    public void decrementarCupoCurso(CursoEntity curso) {
+        curso.setCupo(curso.getCupo() - 1);
+        cursoRepository.save(curso);
     }
 }

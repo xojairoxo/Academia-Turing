@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface CursoRepository extends JpaRepository<CursoEntity, String> {
     Optional<CursoEntity> findByCodigo (String codigo);
+//    void decrementarCupoCurso(CursoEntity curso);
 }

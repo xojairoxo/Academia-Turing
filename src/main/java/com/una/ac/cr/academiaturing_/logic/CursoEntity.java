@@ -53,6 +53,7 @@ public class CursoEntity {
         this.creditos = creditos;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
